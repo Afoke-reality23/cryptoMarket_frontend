@@ -57,7 +57,7 @@ const sellAsset = {
 };
 // console.log(sellAsset);
 // const ip = "http://127.0.0.1:1998";
-const ip = "https://cryptomarketserver-production.up.railway.app";
+const ip = "https://cryptomarket-server.onrender.com";
 function confirmTransaction() {
   fetch(`${ip}/sell`, {
     method: "POST",

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("search-bar");
   console.log(moreInfo);
   // const ip = "http://127.0.0.1:1998";
-  const ip = "https://cryptomarketserver-production.up.railway.app";
+  const ip = "https://cryptomarket-server.onrender.com";
 
   fetchAssets();
   function fetchAssets() {
