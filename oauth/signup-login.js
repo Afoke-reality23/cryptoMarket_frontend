@@ -40,7 +40,7 @@ function processAuthentication(email, password) {
       ) {
         window.location.href = `../index.html?response=${data.response}`;
       } else {
-        window.location = `http://127.0.0.1:5500/frontend/dashboard.html`;
+        window.location = `../index.html`;
         // window.location = `../../dashboard.html`;
       }
     })

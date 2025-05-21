@@ -52,11 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             profile.addEventListener("click", () => {
               if (status.isloggedIn === "loggedIn") {
-                window.location =
-                  "http://127.0.0.1:5500/frontend/profile/index.html";
+                window.location = "profile/index.html";
               } else {
-                window.location =
-                  "http://127.0.0.1:5500/frontend/oauth/login/index.html";
+                window.location = "oauth/login/index.html";
               }
             });
             return [await responses[1].json(), await responses[2].json()];
@@ -109,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       let incrementId = 1;
       for (const coin of coins) {
-        // console.log(data);
         if (coin.symbol) {
           const row = document.createElement("tr");
           row.classList.add("row");
@@ -128,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
           searchId.push(coin.asset_id);
           localStorage.setItem("searchId", searchId);
 
-          // icon.src = coin.logo;
+          icon.src = coin.logo;
           symbol.textContent = coin.symbol.toUpperCase();
           marketCapNum.textContent = roundMarketCap(coin.market_cap).trim();
           percentChange24h.textContent =
