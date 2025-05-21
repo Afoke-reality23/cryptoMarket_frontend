@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <title>Document</title>
+  </head>
+  <script src="script.js" defer></script>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">CryptoMarket</div>
+        <!-- <img src="img/burger-menu-svgrepo-com.svg" class="hamburger" alt="" /> -->
+        <!-- <nav class="nav-bar">
+          <div class="logo-cls-menu">
+            <span class="logo">CryptoMarket</span>
+            <img src="img/close-x-svgrepo-com.svg" class="cls-menu" alt="" />
+          </div>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">FAQ</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms of Service</a></li>
+          </ul>
+          <div class="signup-login">
+            <a href="oauth/login/index.html" class="login">Login</a>
+            <button class="logout toggle_login_logout">logout</button>
+          </div>
+          <div class="theme">
+            <button>Light</button>
+            <button class="active">Dark</button>
+            <button disabled>System</button>
+          </div>
+        </nav> -->
+        <!-- <div class="search-bar-user"> -->
+        <!-- <input
+            type="search"
+            name=""
+            id="search-bar"
+            placeholder="search asset"
+          /> -->
+        <!-- </div> -->
+        <div class="user-profile"></div>
+      </header>
+      <main>
+        <div>
+          <span>Markets </span>
+          <input
+            type="search"
+            name=""
+            id="search-bar"
+            placeholder="search asset"
+          />
+          <div class="total-values">
+            <div> 
+              <p>market Cap</p>
+              <p class="mkt-cap"></p>
+            </div>
+            <div> 
+              <p>24h Vol</p>
+              <p class="per-24h"></p>
+            </div>
+            <div> 
+              <p>BTC Dom</p>
+              <p class="dominance"></p>
+            </div>
+          </div>
+          <nav>
+            <li><a href="#all" class="active">All</a></li>
+            <li><a href="#gainers">Gainers</a></li>
+            <li><a href="#losers">Losers</a></li>
+            <li><a href="#Trending">Trending</a></li>
+          </nav>
+          <div class="sort-filter">
+            <span>showing 100 assets</span>
+            <div>
+              <span>Sort</span>
+              <span>Filter</span>
+            </div>
+          </div>
+        </div>
+        <table>
+          <!-- <caption>
+            Crypto,Stock&NFTs
+          </caption> -->
+          <thead>
+            <tr class="column-row">
+              <th>#</th>
+              <th>Market cap</th>
+              <th>Price</th>
+              <th>24h %</th>
+            </tr>
+          </thead>
+          <tbody class="tbody"></tbody>
+        </table>
+        <div class="more-info">
+          <p>
+            CryptoMarket is your all-in-one cryptocurrency market tracking
+            platform, built for both casual observers and serious investors.
+            We offer live price updates, detailed market data, and easy access
+            to performance metrics for hundreds of digital assets across the
+            global crypto ecosystem.With an intuitive interface and real-time
+            data delivery, CryptoMarket makes it easy to explore market
+            trends, monitor volatility, and track asset performance—all in one
+            place.
+          </p>
+          <div class="what-is-crypto-market">
+            <h3>What is CryptoMarket</h3>
+            <div class="what-detail hide">
+            
+              <p>
+                CryptoMarket is a modern, user-focused cryptocurrency tracking
+                platform designed to provide a clear, real-time overview of the
+                digital asset market. Built from the ground up with performance,
+                accuracy, and simplicity in mind, CryptoMarket offers a
+                comprehensive snapshot of the ever-evolving crypto space, catering
+                to both casual users and experienced investors. In a digital world
+                flooded with noise and cluttered interfaces, CryptoMarket stands
+                out by offering an elegant and streamlined way to access market
+                data without the distractions. Whether you're checking Bitcoin’s
+                current dominance, analyzing the price action of emerging
+                altcoins, or monitoring your personal portfolio performance,
+                CryptoMarket brings together all the tools you need in one fast,
+                intuitive dashboard.
+              </p>
+
+              <p>
+                What makes CryptoMarket different is its commitment to delivering
+                live and accurate data across a wide range of crypto
+                assets—presented clearly, without unnecessary complications. Every
+                detail, from price updates and market caps to volume changes and
+                historical performance, is accessible at a glance, empowering you
+                to make confident, informed decisions with ease. Beyond just
+                tracking prices, CryptoMarket is built to evolve. With a growing
+                list of features, the platform aims to support deep portfolio
+                insights, asset research, and market discovery. It gives users the
+                ability to follow top-performing coins, monitor watchlists,
+                explore market sentiment, and soon, receive personalized alerts.
+              </p>
+              <p>
+                CryptoMarket is built with privacy and performance at its core. We
+                don’t force you to sign up to browse prices. You don’t need to
+                connect wallets or share personal data to benefit from market
+                insights. Whether you’re checking in daily or diving into
+                research, CryptoMarket provides a seamless and secure experience
+                that respects your time and privacy. Our goal is to make the world
+                of cryptocurrency more accessible to everyone—regardless of
+                experience level. By removing the barriers that often complicate
+                the crypto learning curve, we aim to simplify the experience
+                without sacrificing depth or functionality. Whether you're a
+                long-term HODLer, an active trader, or someone simply exploring
+                the crypto space, CryptoMarket is your home for trusted data,
+                clean design, and real-time performance. --- Let me know if you
+                want me to stylize this as a visual banner or section in your UI.
+              </p>
+            </div>
+          </div>
+          <div class="potential">
+            <h3>What You Can Do With CryptoMarket</h3>
+            <ul class="hide">
+              <li>
+                <p>
+                  <b>Track Price Movements:</b> Stay on top of real-time prices,
+                  market caps, and 24-hour changes.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Follow Market Trends:</b> Identify top gainers, losers, and
+                  trending coins across your watchlist.
+                </p>
+              </li>
+              </li>
+
+              <li>
+                <p>
+                  <b>Analyze Your Portfolio (coming soon):</b> Build and track
+                  your crypto holdings with detailed insights and profit/loss
+                  breakdowns
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Monitor Bitcoin Dominance:</b> See how Bitcoin compares to
+                  the rest of the market with live dominance stats.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Stay Informed:</b> Use our platform to check historical
+                  trends, trade volume shifts, and market sentiment.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="why-use-crypto-market">
+            <h3>Why Use CryptoMarket?</h3>
+            <div class="why-detail hide">
+              <p>CryptoFolio is lightweight, fast, and privacy-focused. You don’t need to register or link wallets to browse and explore. Our platform is designed for accessibility—whether you're just exploring crypto for the first time or need a powerful market dashboard at your fingertips.</p>
+
+               <p>We believe in transparent data and user-first design, so you can make informed decisions confidently.</p>
+            </div>
+          </div>
+          <div class="looking-ahead">
+            <h3>Looking Ahead</h3>
+            <div class="looking-ahead-detail hide">
+              <p>CryptoFolio is already built with core features like real-time asset tracking, secure portfolio management, and responsive performance. But we’re not stopping there.</p>
+              <p>In upcoming update, we plan to:</p>
+              <ul>
+                <li>Introduce custom price alerts and notification preferences</li>
+                <li>Expand data coverage to include on-chain metrics and decentralized exchange listings</li>
+                <li>Add educational insights to help users make better trading decisions</li>
+                <li>Support light mode, enhanced accessibility, and deeper portfolio analytics</li>
+                <li>
+                  Our goal is to evolve CryptoFolio into a full-featured platform without compromising performance or simplicity.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="qlink-information">
+          <div class="qlinks">
+            <div>Quick Links</div>
+            <div class="links">
+              <a href="">Home</a>
+              <a href="">Transaction</a>
+              <a href="">Setting</a>
+            </div>
+          </div>
+          <div class="Support & Information">
+            <div class="sui">Support & Information</div>
+            <div class="links">
+              <a href="">FAQ</a>
+              <a href="">Contact Us</a>
+              <a href="">Privacy Policy</a>
+              <a href="">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+        <div class="socal-credit">
+          <div class="credit">
+            <div>Credit</div>
+            <div class="platform">
+              <div>Coinmarket</div>
+              <div>Railway</div>
+            </div>
+          </div>
+          <div class="slink">
+            <div>Social Links</div>
+            <div class=""></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

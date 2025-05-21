@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Sign up</title>
+  </head>
+  <script src="../script.js" defer></script>
+  <body>
+    <header>
+      <div class="appname">CoinStash</div>
+      <p class="welcome">Welcome back</p>
+    </header>
+    <main>
+      <form id="form">
+        <div class="container">
+          <label for="">
+            <span class="type">Email address</span>
+            <input type="email" name="email" id="email" />
+          </label>
+          <span class="email-error"></span>
+        </div>
+        <button id="login">Continue</button>
+        <p>
+          Don't have an account?
+          <a href="../create-account/index.html">Sign up</a>
+        </p>
+        <fieldset>
+          <legend>OR</legend>
+          <button id="google">Continue with Google</button>
+          <button id="phone" disabled>Continue with Phone</button>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>

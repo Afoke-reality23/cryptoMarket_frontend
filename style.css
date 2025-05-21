@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #0f172a;
+  color: #fff;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1500px;
+}
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+header img {
+  max-width: 30px;
+}
+header {
+  display: flex;
+  background-color: #030e20;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.search-bar-user {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+#search-bar {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background: #1e293b;
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  margin: 20px 0;
+  color: #94a3b8;
+}
+#search-bar::placeholder {
+  color: #94a3b8;
+  padding: 25px;
+}
+
+.user-profile {
+  height: 30px;
+  width: 30px;
+  background-color: green;
+  border-radius: 50%;
+}
+.nav-bar {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 9999;
+  padding: 20px;
+  background-color: #030e20;
+  z-index: 1000;
+}
+.logo-cls-menu {
+  display: flex;
+  justify-content: space-between;
+}
+ul {
+  list-style: none;
+}
+li a {
+  font-size: 14px;
+  padding: 10px;
+  display: block;
+  color: #fff;
+}
+li a:hover {
+  background-color: #fff;
+  color: #030e20;
+}
+.signup-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+.signup-login a,
+.logout {
+  width: 100%;
+  background-color: blue;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.toggle_login_logout {
+  display: none;
+}
+.theme {
+  display: flex;
+  background-color: #131a24ea;
+  justify-content: space-around;
+  margin: 30px 0;
+  border-radius: 2px;
+}
+.theme button {
+  border: none;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #ccc;
+  font-size: 14px;
+}
+.theme .active {
+  background-color: #1d3453;
+}
+main {
+  margin: 70px 0;
+  padding: 20px;
+}
+
+main nav {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+main nav li a {
+  text-decoration: none;
+  color: #94a3b8;
+}
+.active {
+  color: #f59e0b;
+  font-weight: bold;
+  border-bottom: 1px solid #f59e0b;
+}
+main > :first-child > :first-child {
+  font-size: 22px;
+  font-weight: bold;
+}
+.total-values {
+  display: flex;
+  background: #1e293b;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+.total-values div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  gap: 5x;
+}
+.total-values div > :nth-child(2) {
+  font-weight: bold;
+  font-size: 16px;
+}
+.total-values div > :nth-child(1) {
+  font-weight: bold;
+  font-size: 16px;
+  color: #94a3b8;
+}
+.sort-filter {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  align-items: center;
+}
+.sort-filter > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.sort-filter > div span {
+  padding: 10px 20px;
+  background: #1e293b;
+  border-radius: 20px;
+}
+table img {
+  max-width: 30px;
+  max-height: 30px;
+  border-radius: 50%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  font-size: 16px;
+  padding: 10px;
+}
+.az {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: none;
+}
+th {
+  font-size: 16px;
+  color: #94a3b8;
+
+  border: none;
+  padding: 15px 0;
+  border-collapse: collapse;
+}
+td,
+tr {
+  padding: 10px;
+  text-align: left;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+tr > :last-child {
+  text-align: center;
+  font-weight: bold;
+  background-clip: content-box;
+}
+tr > :first-child {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.icon-symbol {
+  display: flex;
+  justify-content: left;
+}
+.symbol-market-cap {
+  display: flex;
+  flex-direction: column;
+}
+.symbol-market-cap > :nth-child(2) {
+  color: #94a3b8;
+  font-size: 14px;
+}
+tr a {
+  display: block;
+  position: absolute;
+}
+.row {
+  cursor: pointer;
+}
+.what-is-crypto-market p,
+ul li,
+.why-detail p,
+.looking-ahead-detail p {
+  color: #94a3b8;
+  padding: 5px 0;
+}
+.more-info ul {
+  margin: 0 20px;
+  list-style: disc;
+}
+.what-is-crypto-market h3 {
+  color: #fff;
+  margin: 10px 0;
+}
+details {
+  margin-top: 10rem;
+  padding: 0;
+  margin: 0;
+}
+.more-info h3 {
+  font-size: 14px;
+  font-weight: semi-bold;
+  color: #94a3b8;
+}
+.more-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 15rem;
+  /* background-color: #; */
+}
+.more-info > :first-child {
+  color: #94a3b8;
+  font-size: 10px;
+}
+.hide {
+  display: none;
+}

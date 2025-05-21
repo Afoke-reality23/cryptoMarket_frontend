@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../footer.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="asset-info-container">
+        <div class="asset-info">
+          <div class="logo"><img src="" alt="" class="ast-img"></div>
+          <h1><span class="ast-name"></span><span class="ast-symbol"></span></h1>
+        </div>
+        <div class="price-info">
+          <p class="price"></p>
+          <p class="price-change"></p>
+        </div>
+      </div>
+      <button id="buy">Buy</button>
+    </header>
+    <main>
+      <div class="purchase-container">
+        <div class="purchase">
+          <div class="purchase-price">
+            <span class="rate"></span>
+
+            <p>
+              <span>1</span>
+              <span class="rate-symbol"></span>
+            </p>
+          </div>
+          
+          <div action="" id="form" class="form">
+            <div class="form-div-container">
+              <div class="form-div">
+                <label for="amout">
+                  <span>Amount</span>
+                  <input type="number" name="amount" id="amount" class="amount">
+                </label>
+                <label for="quantity">
+                  <span>Quantity</span>
+                  <input type="number" name="quantity" id="quantity" class="quantity">
+                </label>
+              </div>
+              <span class="amt-error"></span>
+            </div>
+            <div class="buy-cancel">
+              <button id="purchase-btn" class="purchase-btn">Purchase</button>
+              <button id="cancel" class="cancel">Cancel</button>
+            </div>
+          </div>
+        <span class="success"><img src="../img/success.svg" alt=""></span>
+        </div>
+      </div>
+      <div class="chart">
+        <p class="price-para"></p>
+        <div class="timeframes-toggle">
+          <button class="active-btn">24h</button>
+          <button>7d</button>
+          <button>30d</button>
+          <button>3m</button>
+          <button>1y</button>
+          <button>max</button>
+        </div>
+        <div class="chart-board"></div>
+      </div>
+      <div class="mini-price-history">
+        <div class="price-history-min-container">
+          <p>
+            <span>mkt-cap</span>
+            <span class="mkt"></span>
+          </p>
+          <p>
+            <span>supply-max</span>
+            <span class="spm"></span>
+          </p>
+          <p>
+            <span>supply-issued</span>
+            <span class="spi"></span>
+          </p>
+          <p>
+            <span>total-suppy</span>
+            <span class="tsp"></p>
+          <p>
+            <span>circulationg-supply</span>
+            <span class="csp"></span>
+          </p>
+        </div>
+      </div>
+      <div class="converter">
+        <p class="one-btc">1</p>
+        <p class="btc-usd"><span class="btc"></span> <span>USD</span></p>
+      </div>
+      <div class="more-info">
+        <div class="nav-menu">
+          <a href="#overview">overview</a>
+          <a href="#summary">summary</a>
+          <a href="#faq">faq</a>
+          <a href="#new">News</a>
+          <a href="#about">About</a>
+          <a href="#null">null</a>
+        </div>
+        <div class="summary">
+          <p class="sum"></p>
+          <p>
+            <span>founder</span>
+            <span class="founder"></span>
+          </p>
+          <p>
+            <span>website</span>
+            <a href="" class="url"></a>
+          </p>
+
+        </div>
+        <div class="faq">
+          <p>FAQ</p>
+          <div class="faq-parent-container"></div>
+        </div>
+        <div class="news-container">
+          <h2>News</h2>
+          <div class="card-container"></div>
+        </div>
+        <div class="about">
+          <h2 class="about-head">
+            About
+          </h2>
+          <p class="about-para"></p>
+        </div>
+      </div>
+    </main>
+     <footer>
+        <div class="qlink-information">
+          <div class="qlinks">
+            <div>Quick Links</div>
+            <div class="links">
+              <a href="">Home</a>
+              <a href="">Transaction</a>
+              <a href="">Setting</a>
+            </div>
+          </div>
+          <div class="Support & Information">
+            <div class="sui">Support & Information</div>
+            <div class="links">
+              <a href="">FAQ</a>
+              <a href="">Contact Us</a>
+              <a href="">Privacy Policy</a>
+              <a href="">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+        <div class="socal-credit">
+          <div class="credit">
+            <div>Credit</div>
+            <div class="platform">
+              <div>Coinmarket</div>
+              <div>Railway</div>
+            </div>
+          </div>
+          <div class="slink">
+            <div>Social Links</div>
+            <div class=""></div>
+          </div>
+        </div>
+      </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="review.css" />
+  </head>
+  <script src="review.js" defer></script>
+  <body>
+    <div class="container">
+      <div class="review-trans">Review Transaction</div>
+      <div class="transaction-details-one">
+        <div class="details">TRANSACTION DETAILS</div>
+        <span class="img-container">
+          <img src="" alt="" />
+        </span>
+        <p>
+          <span class="quantity"></span>
+          <span class="symbol"></span>
+        </p>
+        <span class="price"></span>
+        <p class="sending">SENDING</p>
+      </div>
+      <div class="transaction-details-two">
+        <div class="details-two">Transaction Details</div>
+        <div class="reciever-sender-wallet">
+          <div class="sender">
+            <span>From</span>
+            <p class="sender-wallet"></p>
+          </div>
+          <div class="reciever">
+            <span>To</span>
+            <p class="reciever-wallet">
+              0Xhe98y34ku28786vgb23o08g9u3ihbgeiud6crywk43p9r8b9g8by84
+            </p>
+          </div>
+        </div>
+        <div class="sumission">
+          <div class="upper">
+            <p>
+              <span>amount</span>
+              <span class="rev-quantity"></span>
+            </p>
+            <p>
+              <span>Asset</span>
+              <span>Blockchain</span>
+            </p>
+            <div class="upper-d">
+              <p>Gas Fee</p>
+              <div class="gassfee">
+                <p>
+                  <span class="gas-fee-quantity"> </span>
+                  <span class="gas-fee-symbol"></span>
+                </p>
+                <span class="gas-fee"></span>
+              </div>
+            </div>
+          </div>
+          <div class="lower-d">
+            <p>Max Total</p>
+            <span class="gassfee">
+              <p>
+                <span class="max-quan"></span>
+                <span class="gas-fee-symbol"></span>
+              </p>
+              <span class="max-price">$745.43</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="confirm-reject">
+        <button id="reject">REJECT</button>
+        <button id="confirm">CONFRIM</button>
+      </div>
+      <p class="verify">Always verify transaction details before confirming</p>
+    </div>
+  </body>
+</html>

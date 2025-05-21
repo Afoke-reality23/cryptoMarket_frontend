@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div class="profile">
+        <p class="username"></p>
+        <span class="balance"></span>
+        <p>Available Balance</p>
+      </div>
+      <nav class="nav-menu">
+        <li class="active-menu"><a href="">Portfolio</a></li>
+        <li><a href="">Activity</a></li>
+        <li><a href="">Waitlist</a></li>
+        <li><a href="">Settings</a></li>
+        <li><a href="">Help</a></li>
+      </nav>
+      <div class="port-summary">
+        <div class="total-value">
+          <span class="iav">IAV</span>
+          <span class="tot-value balance"></span>
+          <span class="tooltip-text">Invested Asset Value</span>
+        </div>
+        <div id="donutChart"></div>
+      </div>
+      <div class="asset-allocation">
+        <h3>Asset Holdings</h3>
+        <div class="asset-container"></div>
+        <p class="see-all all-asset show">See All Assets</p>
+      </div>
+      <div class="recent-activity">
+        <h3>Recent Activity</h3>
+        <div class="activity-container"></div>
+        <p class="see-all all-activity">See All Activiy</p>
+      </div>
+    </main>
+    <footer>
+      <nav>
+        <li><a href="#home">Dashboard</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#profile" class="active">Profile</a></li>
+        <li><span class="sell">Sell</span></li>
+        <li><a href="#setting">Settings</a></li>
+      </nav>
+    </footer>
+  </body>
+</html>

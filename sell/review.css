@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* background-color: #0b1422; */
+  background-color: #0f172a;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  padding: 20px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.review-trans {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.transaction-details-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #1e293b;
+  padding: 20px 10px;
+  border-radius: 10px;
+}
+.details {
+  font-size: 16px;
+  font-weight: bold;
+}
+.img-container {
+  width: 50px;
+  height: 50px;
+  background: grey;
+  border-radius: 50%;
+}
+.quantity,
+.symbol {
+  font-size: 28px;
+  font-weight: bold;
+}
+.price {
+  font-size: 16px;
+  color: #94a3b8;
+}
+.price + p {
+  font-size: 14px;
+  padding: 10px 20px;
+  background: #334155;
+  border-radius: 10px;
+}
+.transaction-details-two {
+  background: #1e293b;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  gap: 20px;
+}
+.details-two {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+.reciever-sender-wallet {
+  border-bottom: 1px solid #334155;
+  padding-bottom: 20px;
+}
+.sumission > div > p {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.reciever > *,
+.sender > * {
+  padding: 15px 5px;
+  font-size: 14px;
+}
+.sender span,
+.reciever span {
+  color: #94a3b8;
+}
+.sender p,
+.reciever p {
+  font-weight: bold;
+  overflow: scroll;
+}
+.sumission > div > p > *:first-child {
+  color: #94a3b8;
+}
+
+.gassfee {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-top: 25px;
+  gap: 5px;
+  padding: 5px;
+}
+.lower-d,
+.upper-d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.upper-d > p {
+  padding: 10px;
+}
+.confirm-reject {
+  display: flex;
+  gap: 10px;
+}
+.confirm-reject > button {
+  flex: 1 1 0;
+  padding: 20px 10px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+#reject {
+  background: #334155;
+  color: #fff;
+  border: none;
+}
+#confirm {
+  background: #f59e0b;
+  border: none;
+}
+.verify {
+  color: #94a3b8;
+  text-align: center;
+  font-size: 12px;
+}

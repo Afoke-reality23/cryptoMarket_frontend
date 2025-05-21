@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <script src="script.js" defer></script>
+  <body>
+    <div class="container">
+      <p class="send-asset">Send Asset</p>
+      <div class="assets">
+        <span>Assets</span>
+        <div name="" id="assetDropDown" class="select-asset">
+          <p class="selected"></p>
+          <div class="option-container hide"></div>
+        </div>
+      </div>
+      <div class="asset-detail">
+        <div class="asset-name-img">
+          <div class="img-container">
+            <img src="" alt="" class="asset-img" />
+          </div>
+          <div class="name-symbol">
+            <span class="asset-name"></span>
+            <span class="asset-symbol"></span>
+          </div>
+        </div>
+        <div class="avg-quantity">
+          <span class="quantity"></span>
+          <span class="avg"></span>
+        </div>
+      </div>
+      <div class="ava-balance">
+        Available Balance:<span class="balance"></span>
+      </div>
+      <div class="sender">
+        <span>From</span>
+        <p>
+          <span class="W">W</span>
+          <span class="from-wallet"></span>
+        </p>
+      </div>
+      <div class="reciever">
+        <span>To</span>
+        <p>
+          <span class="address">Address</span>
+          <input
+            class="to-wallet"
+            name="reciever-wallet"
+            placeholder="enter reciever wallet address"
+          />
+        </p>
+      </div>
+      <div class="amount-to-send">
+        <span class="amount">Amount</span>
+        <div class="quantity-to-send">
+          <p>
+            <span class="quant">0.0</span>
+            <span class="symb"></span>
+          </p>
+          <span class="amount-equal">0</span>
+        </div>
+        <div class="price-range">
+          <p>
+            <span class="min">0</span>
+            <span class="quilibruim">50%</span>
+            <span class="max">100%</span>
+          </p>
+          <input type="range" name="" id="range" min="0" max="100" step="50" />
+        </div>
+      </div>
+      <div class="transaction-speed">
+        <p>Transaction Spedd</p>
+        <div class="speed-selector">
+          <p class="selected-speed"></p>
+          <div class="speed-options hide">
+            <option value="7">standart</option>
+            <option value="5">slow</option>
+            <option value="10">fast</option>
+          </div>
+        </div>
+      </div>
+      <div class="fee-total">
+        <div class="fee">
+          <p>Transaction Fee</p>
+          <div>
+            <div class="asset-symbol">
+              <p>
+                <span class="trans-fee"></span>
+                <span class="trans-fee-symbol"></span>
+              </p>
+              <span class="gas-fee"></span>
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <p>Max Total</p>
+          <div class="asset-symbol">
+            <p>
+              <span class="total-quantity">0.503ETH</span>
+              <span class="trans-fee-symbol"></span>
+            </p>
+            <span class="total-price"></span>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <button id="reviewButton">REVIEW TRANSANSACTION</button>
+      </div>
+    </div>
+  </body>
+</html>

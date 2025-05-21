@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../password.css" />
+    <title>Sign up</title>
+  </head>
+  <script src="../../signup-login.js" defer></script>
+  <body>
+    <header>
+      <div class="appname">CoinStash</div>
+      <p class="create">Welcome back</p>
+      <p>Enter your password to continue</p>
+    </header>
+    <main>
+      <form id="form">
+        <label for="email">
+          <span class="type">Email address</span>
+          <input type="email" name="" id="email" />
+        </label>
+        <label for="password">
+          <span class="type">password</span>
+          <input type="password" name="password" id="password" />
+        </label>
+        <button id="login">Continue</button>
+        <p>Don't have an account? <a href="../index.html">Sign in</a></p>
+        <fieldset>
+          <legend>OR</legend>
+          <button id="google">Continue with Google</button>
+          <button id="phone" disabled>Continue with Phone</button>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
