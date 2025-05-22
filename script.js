@@ -39,10 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
     Promise.all([auth, asset, total_value])
       .then(async (responses) => {
         for (let response of responses) {
+          console.log(response);
           if (!response.ok) {
             throw new Error(`Error message:${response.status}`);
           } else {
             const status = await responses[0].json();
+            console.log(status.isloggedIn);
             if (status.isloggedIn === "loggedIn") {
               // logout.classList.toggle("toggle_login_logout");
               // login.classList.toggle("toggle_login_logout");
