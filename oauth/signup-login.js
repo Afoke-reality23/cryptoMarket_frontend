@@ -40,7 +40,7 @@ function processAuthentication(email, password) {
       ) {
         window.location.href = `../index.html?response=${data.response}`;
       } else {
-        window.location = `../index.html`;
+        window.location = `https://realcryptomarket.netlify.app`;
         // window.location = `../../dashboard.html`;
       }
     })
