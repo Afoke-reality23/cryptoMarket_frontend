@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
             throw new Error(`Error message:${response.status}`);
           } else {
             const status = await responses[0].json();
-            console.log(status);
-            console.log(status.isloggedIn);
+            console.log("status >>>>:", status);
+            // console.log(status.isloggedIn);
             if (status.isloggedIn === "loggedIn") {
               // logout.classList.toggle("toggle_login_logout");
               // login.classList.toggle("toggle_login_logout");
