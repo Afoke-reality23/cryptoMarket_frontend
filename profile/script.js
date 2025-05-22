@@ -9,6 +9,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const seeAllAsset = document.querySelector(".all-asset");
   const seeAllActivity = document.querySelector(".all-activity");
   const sell = document.querySelector(".sell");
+  const logOutBtn = document.getElementById("logout");
+
+  logOutBtn.addEventListener("click", () => {
+    fetch(`${ip}/logout`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`logout Error:${response.statusText}`);
+      } else {
+        window.location = "../index.html";
+      }
+    });
+  });
   let toBeSoldAsset;
   updateSellingPage();
   function updateSellingPage() {

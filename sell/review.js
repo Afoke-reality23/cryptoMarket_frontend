@@ -76,6 +76,7 @@ function confirmTransaction() {
     })
     .then((data) => {
       console.log(data);
+      window.location = "../profile/index.html";
     })
     .catch((error) => {
       console.error(error);
