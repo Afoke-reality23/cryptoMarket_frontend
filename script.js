@@ -14,7 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const btcDominace = document.querySelector(".dominance");
   const moreInfo = document.querySelectorAll(".more-info >div");
   const searchBar = document.getElementById("search-bar");
-  console.log(moreInfo);
+  const marketList = document.querySelector(".market-listing");
+  const tableContent = document.getElementById("table");
+  const thColCap = document.querySelector(".th-col-cap");
+  const thCol24h = document.querySelector(".th-col-24h");
+  // console.log(moreInfo);
   // const ip = "http://127.0.0.1:1998";
   const ip = "https://cryptomarket-server.onrender.com";
 
@@ -39,33 +43,25 @@ document.addEventListener("DOMContentLoaded", () => {
     Promise.all([auth, asset, total_value])
       .then(async (responses) => {
         for (let response of responses) {
-          console.log(response);
           if (!response.ok) {
             throw new Error(`Error message:${response.status}`);
-          } else {
-            const status = await responses[0].json();
-            console.log("status >>>>:", status);
-            // console.log(status.isloggedIn);
-            if (status.isloggedIn === "loggedIn") {
-              // logout.classList.toggle("toggle_login_logout");
-              // login.classList.toggle("toggle_login_logout");
-            } else {
-              // login.classList.toggle("toggle-login-logout");
-              // logout.classList.toggle("toggle-login-logout");
-            }
-            profile.addEventListener("click", () => {
-              if (status.isloggedIn === "loggedIn") {
-                window.location = "profile/index.html";
-              } else {
-                window.location = "oauth/login/index.html";
-              }
-            });
-            return [await responses[1].json(), await responses[2].json()];
           }
         }
+        const status = await responses[0].json();
+        profile.addEventListener("click", () => {
+          if (status.isloggedIn === "loggedIn") {
+            window.location = "profile/index.html";
+          } else {
+            window.location = "oauth/login/index.html";
+          }
+        });
+        const [assetsData, assetTotal] = [
+          await responses[1].json(),
+          await responses[2].json(),
+        ];
+        return [assetsData, assetTotal, status];
       })
       .then((data) => {
-        console.log(data);
         updateTable(data[0]);
         data[0].map((obj) => {
           let values = Object.values(obj);
@@ -79,6 +75,31 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         console.error("fetch error", error);
+      });
+  }
+  marketList.addEventListener("click", () => {
+    marketListing();
+  });
+  function marketListing() {
+    fetch(`${ip}/market-listing`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error:${response.statusText}`);
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        displayMarketTable(data);
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }
   function calulateTotalMarketCap(arr, btcCap) {
@@ -107,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   let searchId = [];
   function updateTable(coins) {
+    console.log("called");
     try {
       let incrementId = 1;
       for (const coin of coins) {
@@ -235,6 +257,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   observer.observe(tableBody, { childList: true, subtree: true });
+
+  function displayMarketTable(listed) {
+    while (tableBody.firstChild) {
+      tableBody.removeChild(tableBody.firstChild);
+    }
+    thColCap.textContent = "Asset";
+    thCol24h.textContent = "Quantity";
+    let no = 1;
+    listed.map((list) => {
+      const listedAssetRow = document.createElement("tr");
+      const negotiate = document.createElement("td");
+      const listedAssetNameData = document.createElement("td");
+      let num = document.createElement("td");
+      const listAssetQuantity = document.createElement("td");
+      const listedAssetPriceData = document.createElement("td");
+      num.textContent = no++;
+      listedAssetNameData.textContent = list[1].toUpperCase();
+      listAssetQuantity.textContent = list[5];
+      listedAssetPriceData.textContent = list[4];
+      negotiate.textContent = "buy";
+      negotiate.classList.add("nego");
+      listedAssetRow.appendChild(num);
+      listedAssetRow.appendChild(listedAssetNameData);
+      listedAssetRow.classList.add("listed-row");
+      listedAssetRow.appendChild(listAssetQuantity);
+      listedAssetRow.appendChild(listedAssetPriceData);
+      listedAssetRow.appendChild(negotiate);
+
+      tableBody.appendChild(listedAssetRow);
+    });
+    const allListedAsset = document.querySelectorAll(".tbody >*");
+    allListedAsset.forEach((listedAsset) => {
+      const subchild = listedAsset.querySelector(".nego");
+      subchild.addEventListener("click", () => {});
+    });
+  }
+
   function roundMarketCap(value) {
     if (value > 1e12) return (value / 1e12).toPrecision(2) + "T";
     if (value > 1e9) return (value / 1e9).toPrecision(3) + "B";

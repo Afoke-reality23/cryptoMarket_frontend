@@ -57,7 +57,7 @@ header {
   background-color: green;
   border-radius: 50%;
 }
-.nav-bar {
+/* .nav-bar {
   display: none;
   flex-direction: column;
   gap: 20px;
@@ -125,7 +125,7 @@ li a:hover {
 }
 .theme .active {
   background-color: #1d3453;
-}
+} */
 main {
   margin: 70px 0;
   padding: 20px;
@@ -137,7 +137,8 @@ main nav {
   justify-content: space-around;
   margin-top: 15px;
 }
-main nav li a {
+main nav li a,
+main nav li div {
   text-decoration: none;
   color: #94a3b8;
 }
@@ -213,7 +214,7 @@ caption {
 th {
   font-size: 16px;
   color: #94a3b8;
-
+  text-align: center;
   border: none;
   padding: 15px 0;
   border-collapse: collapse;
@@ -236,10 +237,10 @@ tr > :first-child {
   color: #94a3b8;
   font-size: 14px;
 }
-
 .icon-symbol {
   display: flex;
   justify-content: left;
+  width: 85px;
 }
 .symbol-market-cap {
   display: flex;
@@ -294,4 +295,21 @@ details {
 }
 .hide {
   display: none;
+}
+.float-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #030e20;
+}
+.float-footer ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+.float-footer ul li {
+  padding: 15px 10px;
 }

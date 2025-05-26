@@ -58,8 +58,7 @@ function fetchAssetDetail(assetId) {
             if (status.isloggedIn === "loggedIn") {
               purchaseContainer.style.display = "flex";
             } else {
-              window.location =
-                "http://127.0.0.1:5500/frontend/oauth/login/index.html";
+              window.location = "../oauth/login/index.html";
             }
           });
           // getLoginStatus(/)
