@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const reviewBtn = document.getElementById("reviewButton");
   const transFeesymbol = document.querySelectorAll(".trans-fee-symbol");
   const selectedListedAsset = document.querySelector(".list");
-  // const ip = "http://127.0.0.1:1998";
-  const ip = "https://cryptomarket-server.onrender.com";
+  const ip = "http://127.0.0.1:1998";
+  // const ip = "https://cryptomarket-server.onrender.com";
 
   function updateSellingPage() {
     fetch(`${ip}/profile`, {

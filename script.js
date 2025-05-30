@@ -14,13 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const btcDominace = document.querySelector(".dominance");
   const moreInfo = document.querySelectorAll(".more-info >div");
   const searchBar = document.getElementById("search-bar");
-  const marketList = document.querySelector(".market-listing");
+  const marketList = document.querySelectorAll(".market-listing");
   const tableContent = document.getElementById("table");
-  const thColCap = document.querySelector(".th-col-cap");
-  const thCol24h = document.querySelector(".th-col-24h");
+  const warningCon = document.querySelector(".warning-container");
+  const docBody = document.querySelector(".doc-body");
+  const listAssetOverallInnerContainer = document.querySelector(".asset-con");
+  const proceedNegoBtn = document.getElementById("proceedNego");
   // console.log(moreInfo);
-  // const ip = "http://127.0.0.1:1998";
-  const ip = "https://cryptomarket-server.onrender.com";
+  const ip = "http://127.0.0.1:1998";
+  // const ip = "https://cryptomarket-server.onrender.com";
 
   fetchAssets();
   function fetchAssets() {
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     Promise.all([auth, asset, total_value])
       .then(async (responses) => {
+        console.log("response >>>>", responses);
         for (let response of responses) {
           if (!response.ok) {
             throw new Error(`Error message:${response.status}`);
@@ -77,8 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("fetch error", error);
       });
   }
-  marketList.addEventListener("click", () => {
-    marketListing();
+
+  marketList.forEach((marketListBtn) => {
+    marketListBtn.addEventListener("click", () => {
+      marketListing();
+    });
   });
   function marketListing() {
     fetch(`${ip}/market-listing`, {
@@ -96,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .then((data) => {
+        console.log(data);
         displayMarketTable(data);
       })
       .catch((err) => {
@@ -128,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   let searchId = [];
   function updateTable(coins) {
-    console.log("called");
     try {
       let incrementId = 1;
       for (const coin of coins) {
@@ -259,39 +265,101 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(tableBody, { childList: true, subtree: true });
 
   function displayMarketTable(listed) {
-    while (tableBody.firstChild) {
-      tableBody.removeChild(tableBody.firstChild);
+    tableContent.style.display = "none";
+    while (listAssetOverallInnerContainer.firstChild) {
+      listAssetOverallInnerContainer.removeChild(
+        listAssetOverallInnerContainer.firstChild
+      );
     }
-    thColCap.textContent = "Asset";
-    thCol24h.textContent = "Quantity";
     let no = 1;
     listed.map((list) => {
-      const listedAssetRow = document.createElement("tr");
-      const negotiate = document.createElement("td");
-      const listedAssetNameData = document.createElement("td");
-      let num = document.createElement("td");
-      const listAssetQuantity = document.createElement("td");
-      const listedAssetPriceData = document.createElement("td");
+      const listedAssetContainer = document.createElement("div");
+      const mainAssetContainer = document.createElement("div");
+      mainAssetContainer.classList.add("mini-con");
+      let num = document.createElement("div");
       num.textContent = no++;
+      mainAssetContainer.appendChild(num);
+      const listedAssetNameData = document.createElement("div");
       listedAssetNameData.textContent = list[1].toUpperCase();
+      listedAssetNameData.dataset.sellerId = list[6];
+      mainAssetContainer.appendChild(listedAssetNameData);
+      const listAssetQuantity = document.createElement("div");
       listAssetQuantity.textContent = list[5];
+      mainAssetContainer.appendChild(listAssetQuantity);
+      const listedAssetPriceData = document.createElement("div");
       listedAssetPriceData.textContent = list[4];
-      negotiate.textContent = "buy";
-      negotiate.classList.add("nego");
-      listedAssetRow.appendChild(num);
-      listedAssetRow.appendChild(listedAssetNameData);
-      listedAssetRow.classList.add("listed-row");
-      listedAssetRow.appendChild(listAssetQuantity);
-      listedAssetRow.appendChild(listedAssetPriceData);
-      listedAssetRow.appendChild(negotiate);
+      mainAssetContainer.appendChild(listedAssetPriceData);
 
-      tableBody.appendChild(listedAssetRow);
+      const quickBuyNegotiate = document.createElement("div");
+      quickBuyNegotiate.classList.add("buy-nego", "hide");
+      const quickBuy = document.createElement("div");
+      quickBuy.classList.add("quick-buy");
+      quickBuy.textContent = "Quick buy";
+      quickBuyNegotiate.appendChild(quickBuy);
+      const negotiate = document.createElement("div");
+      negotiate.classList.add("nego");
+      negotiate.textContent = "Negotiate";
+      quickBuyNegotiate.appendChild(negotiate);
+
+      listedAssetContainer.appendChild(mainAssetContainer);
+      listedAssetContainer.appendChild(quickBuyNegotiate);
+      listAssetOverallInnerContainer.appendChild(listedAssetContainer);
+      mainAssetContainer.addEventListener("click", () => {
+        quickBuyNegotiate.classList.toggle("hide");
+      });
+      boughtAsset = {
+        asset_id: list[2],
+        sellerId: Number(list[6]),
+      };
+      quickBuy.addEventListener("click", () => {
+        purchaseListedAsset(boughtAsset);
+      });
+      negotiate.addEventListener("click", () => {
+        warningCon.classList.toggle("hide");
+        docBody.style.overflow = "hidden";
+      });
+      proceedNegoBtn.addEventListener("click", async () => {
+        boughtAsset.status = "Negotiating";
+        let chatId = await markAssetToNegotiation(boughtAsset);
+        // console.log(chatId);
+        let assetDetails = new URLSearchParams({
+          assetChatDetails: JSON.stringify(chatId),
+        });
+        window.location = `negotiations/chat/index.html?${assetDetails.toString()}`;
+      });
     });
-    const allListedAsset = document.querySelectorAll(".tbody >*");
-    allListedAsset.forEach((listedAsset) => {
-      const subchild = listedAsset.querySelector(".nego");
-      subchild.addEventListener("click", () => {});
-    });
+    async function markAssetToNegotiation(data) {
+      try {
+        const sendStatus = await fetch(`${ip}/market-listing`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const negotiationStatus = await sendStatus.json();
+        return negotiationStatus;
+      } catch (err) {
+        console.error("Error:", err);
+      }
+    }
+    async function purchaseListedAsset(data) {
+      try {
+        const buy = await fetch(`${ip}/buy-listed`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const buyResult = await buy.json();
+        console.log(buyResult);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 
   function roundMarketCap(value) {

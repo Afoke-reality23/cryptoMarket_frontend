@@ -64,13 +64,14 @@ const sellAsset = {
 };
 const listAssetObj = {
   asset_id: asset[7],
-  status: "listed",
+  state: "listed",
   set_price: Number(amount),
   quantity: Number(rcvQuanity),
+  processing_speed: Number(transRate),
 };
 // console.log(sellAsset);
-// const ip = "http://127.0.0.1:1998";
-const ip = "https://cryptomarket-server.onrender.com";
+const ip = "http://127.0.0.1:1998";
+// const ip = "https://cryptomarket-server.onrender.com";
 function confirmTransaction() {
   fetch(`${ip}/sell`, {
     method: "POST",
@@ -97,7 +98,7 @@ function confirmTransaction() {
 }
 
 function listAsset() {
-  fetch(`${ip}/market_listing`, {
+  fetch(`${ip}/market-listing`, {
     method: "POST",
     credentials: "include",
     headers: {

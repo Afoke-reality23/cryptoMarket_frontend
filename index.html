@@ -8,7 +8,7 @@
     <title>Document</title>
   </head>
   <script src="script.js" defer></script>
-  <body>
+  <body class="doc-body">
     <div class="container">
       <header>
         <div class="logo">CryptoMarket</div>
@@ -80,6 +80,24 @@
             <div>
               <span>Sort</span>
               <span>Filter</span>
+            </div>
+          </div>
+        </div>
+        <div class="listed-asset-container">
+          <div class="listed-header">
+            <div>#</div>
+            <div>Asset</div>
+            <div>quantity</div>
+            <div>price</div>
+          </div>
+          <div class="asset-con"></div>
+          <div class="warning-container hide">
+            <div class="proceed-nego-con">
+              <p> Before proceeding with the transaction failure to complete the transaction or cancelling mid way will lead to a charge of $2 so make sure you're ok with the set price before proceeding</p>
+              <div class="pro-nego-btn">
+                <button id="cancelNego">Cancel</button>
+                <button id="proceedNego">proceed</button>
+              </div>
             </div>
           </div>
         </div>
@@ -258,10 +276,10 @@
         <div class="float-footer">
           <ul>
             <li><span class="dashboard">Home</span></li>
-            <li><span class="News">NEW</span></li>
+            <li><span class="market-listing">Market</span></li>
             <li><span class="Trade">trade</span></li>
             <li><span class="portfolio">portfolio</span></li>
-            <li><span class="setting">setting</span></li>
+            <li><span class="setting">chat</span></li>
           </ul>
         </div>
       </footer>

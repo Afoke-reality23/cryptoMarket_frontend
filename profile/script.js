@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // const ip = "http://127.0.0.1:1998";
-  const ip = "https://cryptomarket-server.onrender.com";
+  const ip = "http://127.0.0.1:1998";
+  // const ip = "https://cryptomarket-server.onrender.com";
   const userName = document.querySelector(".username");
   const balance = document.querySelector(".balance");
   const assetTotalValue = document.querySelector(".tot-value");
@@ -253,6 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if ((value = 1e4)) return value.toPrecision(1) + "K";
   }
   sell.addEventListener("click", () => {
-    window.location = `../sell/index.html`;
+    window.location = `../transaction/index.html`;
   });
 });
