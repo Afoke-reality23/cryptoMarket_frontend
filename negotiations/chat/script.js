@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         populateChat(data.message, userId);
         let recieverId =
           userId === data.buyer_id ? data.seller_id : data.buyer_id;
-        const ws = new WebSocket("ws://127.0.0.1:1991");
+        const ws = new WebSocket(`ws://${ip}`);
         ws.onopen = () => console.log("connected");
         ws.onmessage = (e) => {
           let chat = JSON.parse(e.data);
