@@ -32,7 +32,6 @@ const cancel = document.getElementById("cancel");
 const aboutPara = document.querySelector(".about-para");
 
 let normalPrice;
-// console.log(assetSymbol);
 // const ip = "http://127.0.0.1:1998";
 const ip = "https://cryptomarket-server.onrender.com";
 function fetchAssetDetail(assetId) {
@@ -58,8 +57,7 @@ function fetchAssetDetail(assetId) {
             if (status.isloggedIn === "loggedIn") {
               purchaseContainer.style.display = "flex";
             } else {
-              window.location =
-                "http://127.0.0.1:5500/frontend/oauth/login/index.html";
+              window.location = "../oauth/login/index.html";
             }
           });
           // getLoginStatus(/)

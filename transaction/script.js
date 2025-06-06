@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let totPrice = document.querySelector(".total-price");
   const reviewBtn = document.getElementById("reviewButton");
   const transFeesymbol = document.querySelectorAll(".trans-fee-symbol");
+  const selectedListedAsset = document.querySelector(".list");
   // const ip = "http://127.0.0.1:1998";
   const ip = "https://cryptomarket-server.onrender.com";
 
@@ -157,11 +158,28 @@ document.addEventListener("DOMContentLoaded", () => {
         wallet: userWallet.textContent,
         clientWallet: clientWallet.value,
         transRate: selectedTransferSpeed.dataset.selectedValue,
+        transType: "sell",
+      });
+      window.location = `review.html?${review.toString()}`;
+    });
+    console.log(asset);
+    selectedListedAsset.addEventListener("click", () => {
+      let review = new URLSearchParams({
+        amount: rangeInput.value,
+        assetDet: asset,
+        quantity: quant.textContent,
+        maxQuan: totQuantity.textContent,
+        maxPrice: totPrice.textContent,
+        gasFee: gasFee.textContent,
+        gasQuanFee: transFee.textContent,
+        wallet: userWallet.textContent,
+        clientWallet: clientWallet.value,
+        transRate: selectedTransferSpeed.dataset.selectedValue,
+        transType: "list",
       });
       window.location = `review.html?${review.toString()}`;
     });
   }
-
   selectedTransferSpeed.addEventListener("click", () => {
     speedOptionContainer.classList.toggle("hide");
   });

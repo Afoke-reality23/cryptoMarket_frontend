@@ -13,8 +13,9 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   processAuthentication(email.value, password.value);
 });
+
 function processAuthentication(email, password) {
-  fetch(`${ip}/frontend/oauth/${route}/password/`, {
+  fetch(`${ip}/frontend/oauth/${route}/password`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -26,8 +27,9 @@ function processAuthentication(email, password) {
     }),
   })
     .then((response) => {
+      console.log("response >>>>>>>>>", response);
       if (!response.ok) {
-        throw new Error("fail to fetch");
+        throw new Error(`Error message:${response.statusText}`);
       } else {
         return response.json();
       }

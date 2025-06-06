@@ -1,10 +1,13 @@
 const urparam = new URLSearchParams(window.location.search);
 const rcvQuanity = urparam.get("quantity");
 const transRate = urparam.get("transRate");
+const tType = urparam.get("transType");
+console.log(tType);
 console.log(transRate);
 const rcvSymbol = urparam.get("assetDet");
 const amount = urparam.get("amount");
 const asset = rcvSymbol.split(",");
+console.log(rcvQuanity);
 const from = urparam.get("wallet");
 const to = urparam.get("clientWallet");
 const transFQuan = urparam.get("gasQuanFee");
@@ -43,7 +46,11 @@ price.textContent = Number(amount).toLocaleString("en-US", {
   currency: "USD",
 });
 confrim.addEventListener("click", () => {
-  confirmTransaction();
+  if (tType === "sell") {
+    confirmTransaction();
+  } else {
+    listAsset();
+  }
 });
 cancel.addEventListener("click", () => {
   window.location = "index.html";
@@ -54,6 +61,13 @@ const sellAsset = {
   trans_price: Number(totPrice.textContent.replace(/[()$,]+/g, "")),
   processing_speed: Number(transRate),
   reciever_wallet: to,
+};
+const listAssetObj = {
+  asset_id: asset[7],
+  state: "listed",
+  set_price: Number(amount),
+  quantity: Number(rcvQuanity),
+  processing_speed: Number(transRate),
 };
 // console.log(sellAsset);
 // const ip = "http://127.0.0.1:1998";
@@ -80,5 +94,30 @@ function confirmTransaction() {
     })
     .catch((error) => {
       console.error(error);
+    });
+}
+
+function listAsset() {
+  fetch(`${ip}/market-listing`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(listAssetObj),
+  })
+    .then((resp) => {
+      if (!resp.ok) {
+        throw new Error(`Error:${resp.statusText}`);
+      } else {
+        return resp.json();
+      }
+    })
+    .then((data) => {
+      if (data.status === "success") {
+        window.location = `../profile/index.html`;
+      } else {
+        console.log("sorry something went wrong !!!!");
+      }
     });
 }

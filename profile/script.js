@@ -253,6 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if ((value = 1e4)) return value.toPrecision(1) + "K";
   }
   sell.addEventListener("click", () => {
-    window.location = `../sell/index.html`;
+    window.location = `../transaction/index.html`;
   });
 });
