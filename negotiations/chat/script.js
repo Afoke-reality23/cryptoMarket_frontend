@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // const ip = "http://127.0.0.1:1998";
   const ip = "https://cryptomarket-server.onrender.com";
+  const chatIp = "wss://cryptomarket-server.onrender.com";
   const urlParam = new URLSearchParams(window.location.search);
   let chatId = urlParam.get("chat_id");
   console.log(chatId);
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         populateChat(data.message, userId);
         let recieverId =
           userId === data.buyer_id ? data.seller_id : data.buyer_id;
-        const ws = new WebSocket(`ws://${ip}`);
+        const ws = new WebSocket(`${chatIp}`);
         ws.onopen = () => console.log("connected");
         ws.onmessage = (e) => {
           let chat = JSON.parse(e.data);
