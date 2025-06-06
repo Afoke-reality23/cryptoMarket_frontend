@@ -32,9 +32,8 @@ const cancel = document.getElementById("cancel");
 const aboutPara = document.querySelector(".about-para");
 
 let normalPrice;
-// console.log(assetSymbol);
-const ip = "http://127.0.0.1:1998";
-// const ip = "https://cryptomarket-server.onrender.com";
+// const ip = "http://127.0.0.1:1998";
+const ip = "https://cryptomarket-server.onrender.com";
 function fetchAssetDetail(assetId) {
   if (assetId) {
     const auth = fetch(`${ip}/oauth/status`, {

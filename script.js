@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const listAssetOverallInnerContainer = document.querySelector(".asset-con");
   const proceedNegoBtn = document.getElementById("proceedNego");
   // console.log(moreInfo);
-  const ip = "http://127.0.0.1:1998";
-  // const ip = "https://cryptomarket-server.onrender.com";
+  // const ip = "http://127.0.0.1:1998";
+  const ip = "https://cryptomarket-server.onrender.com";
 
   fetchAssets();
   function fetchAssets() {
@@ -51,6 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
         const status = await responses[0].json();
+        console.log("ok");
+
         profile.addEventListener("click", () => {
           if (status.isloggedIn === "loggedIn") {
             window.location = "profile/index.html";
@@ -62,9 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
           await responses[1].json(),
           await responses[2].json(),
         ];
+        console.log("hi");
         return [assetsData, assetTotal, status];
       })
       .then((data) => {
+        console.log(data);
         updateTable(data[0]);
         data[0].map((obj) => {
           let values = Object.values(obj);
@@ -321,11 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
       proceedNegoBtn.addEventListener("click", async () => {
         boughtAsset.status = "Negotiating";
         let chatId = await markAssetToNegotiation(boughtAsset);
-        // console.log(chatId);
-        let assetDetails = new URLSearchParams({
-          assetChatDetails: JSON.stringify(chatId),
-        });
-        window.location = `negotiations/chat/index.html?${assetDetails.toString()}`;
+        console.log(chatId);
+        let assetDetails = new URLSearchParams(chatId);
+        console.log(assetDetails);
+        window.location = `negotiations/chat/index.html?${assetDetails}`;
       });
     });
     async function markAssetToNegotiation(data) {
