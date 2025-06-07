@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
           userId === data.buyer_id ? data.seller_id : data.buyer_id;
         console.log(userId);
         const ws = new WebSocket(
-          `wss://cryptomarket-server.onrender.com/chat?user_id=${userId}`
+          `wss://cryptomarket-chat-server.onrender.com/chat?user_id=${userId}`
         );
         ws.onopen = () => console.log("connected");
         ws.onmessage = (e) => {
