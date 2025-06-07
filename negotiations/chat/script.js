@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .then((data) => {
-        console.log(data);
         let userId = data.user_id;
         populateChat(data.message, userId);
         let recieverId =
           userId === data.buyer_id ? data.seller_id : data.buyer_id;
+        console.log(userId);
         const ws = new WebSocket(
           `wss://cryptomarket-server.onrender.com/chat?user_id=${userId}`
         );
