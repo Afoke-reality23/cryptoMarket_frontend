@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   // const ip = "http://127.0.0.1:1998";
   const ip = "https://cryptomarket-server.onrender.com";
-  const chatIp = "wss://cryptomarket-server.onrender.com";
-  // const chatIp = "ws://127.0.0.1:19991";
+  // const chatIp = "wss://cryptomarket-server.onrender.com";
+  // const chatIp = "ws://127.0.0.1:19991/chat?";
   const urlParam = new URLSearchParams(window.location.search);
   let chatId = urlParam.get("chat_id");
   console.log(chatId);
@@ -31,9 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         populateChat(data.message, userId);
         let recieverId =
           userId === data.buyer_id ? data.seller_id : data.buyer_id;
-        const ws = new WebSocket("wss://cryptomarket-server.onrender.com");
+        const ws = new WebSocket(
+          `wss://cryptomarket-server.onrender.com/chat?user_id=${userId}`
+        );
         ws.onopen = () => console.log("connected");
         ws.onmessage = (e) => {
+          console.log(e.data);
           let chat = JSON.parse(e.data);
           const chatContainer = document.createElement("div");
           const para = document.createElement("p");
@@ -44,11 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
           chatContainer.appendChild(para);
           mainContainer.appendChild(chatContainer);
         };
-        sendUserIdToChatServer(ws, userId);
         sendBtn.addEventListener("click", () => {
           if (ws.readyState == WebSocket.OPEN) {
             let message = {
-              recieverId: recieverId,
+              recieverId: recieverId.toString(),
               senderId: userId,
               message: { chatId: chatId },
             };
@@ -84,14 +86,5 @@ document.addEventListener("DOMContentLoaded", () => {
       chatContainer.appendChild(para);
       mainContainer.appendChild(chatContainer);
     });
-  }
-  function sendUserIdToChatServer(ws, userId) {
-    setTimeout(() => {
-      if (ws.readyState == WebSocket.OPEN) {
-        ws.send(JSON.stringify({ userId: userId }));
-      } else {
-        console.log("webSocket not ready");
-      }
-    }, 200);
   }
 });
