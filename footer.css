@@ -1,5 +1,6 @@
 footer {
-  background-color: #020a19;
+  /* background-color: #020a19; */
+  background-color: rgb(17 24 39);
   color: #fff;
   padding: 60px 10px;
   display: flex;

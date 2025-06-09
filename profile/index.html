@@ -11,9 +11,17 @@
   <body>
     <main>
       <div class="profile">
-        <p class="username"></p>
-        <span class="balance"></span>
-        <p>Available Balance</p>
+        <div class="username-notify-pic">
+          <h1 class="username"></h1>
+          <div class="profile-notify">
+            <div class="notify"></div>
+            <div class="profile-img"></div>
+          </div>
+        </div>
+        <div class="user-balance">
+          <p>Available Balance</p>
+          <span class="balance"></span>
+        </div>
       </div>
       <nav class="nav-menu">
         <li class="active-menu"><a href="">Portfolio</a></li>
@@ -28,8 +36,9 @@
           <span class="tot-value balance"></span>
           <span class="tooltip-text">Invested Asset Value</span>
         </div>
-        <div id="donutChart"></div>
       </div>
+      <div id="donutChart"></div>
+
       <div class="asset-allocation">
         <h3>Asset Holdings</h3>
         <div class="asset-container"></div>

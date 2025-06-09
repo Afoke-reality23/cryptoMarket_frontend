@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const docBody = document.querySelector(".doc-body");
   const listAssetOverallInnerContainer = document.querySelector(".asset-con");
   const proceedNegoBtn = document.getElementById("proceedNego");
-  // console.log(moreInfo);
+  const chat = document.querySelector(".chat");
+  const unreadedMessagesTotalNo = document.querySelector(".no-of-unread-txt");
+  console.log(unreadedMessagesTotalNo);
   // const ip = "http://127.0.0.1:1998";
   const ip = "https://cryptomarket-server.onrender.com";
 
@@ -44,27 +46,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     Promise.all([auth, asset, total_value])
       .then(async (responses) => {
-        console.log("response >>>>", responses);
         for (let response of responses) {
           if (!response.ok) {
             throw new Error(`Error message:${response.status}`);
           }
         }
         const status = await responses[0].json();
-        console.log("ok");
-
-        profile.addEventListener("click", () => {
-          if (status.isloggedIn === "loggedIn") {
-            window.location = "profile/index.html";
-          } else {
-            window.location = "oauth/login/index.html";
+        if (status.isloggedIn === "loggedIn") {
+          profile.href = "profile/index.html";
+          chat.href = "negotiations/index.html";
+          const mssgNo = await unreadMessage();
+          if (Number(mssgNo) > 0) {
+            const nam = "hello";
+            unreadedMessagesTotalNo.textContent = mssgNo;
           }
-        });
+        } else {
+          profile.href = "oauth/login/index.html";
+          chat.href = "oauth/login/index.html";
+        }
+
         const [assetsData, assetTotal] = [
           await responses[1].json(),
           await responses[2].json(),
         ];
-        console.log("hi");
         return [assetsData, assetTotal, status];
       })
       .then((data) => {
@@ -90,6 +94,19 @@ document.addEventListener("DOMContentLoaded", () => {
       marketListing();
     });
   });
+  async function unreadMessage() {
+    try {
+      const url = await fetch(`${ip}/chat/unread-message`, {
+        method: "GET",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+      });
+      const urlResult = await url.json();
+      return urlResult;
+    } catch (e) {
+      console.error(e);
+    }
+  }
   function marketListing() {
     fetch(`${ip}/market-listing`, {
       method: "GET",
@@ -198,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let gnt = localStorage.getItem("searchId");
   let turnArray = gnt.split(",");
   let deBouncer;
-  console.log(searchBar.value.length);
   searchBar.addEventListener("input", () => {
     clearTimeout(deBouncer);
     deBouncer = setTimeout(() => {

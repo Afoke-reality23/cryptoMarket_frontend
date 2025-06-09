@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         addHolding(data.asset);
         let sold = data.asset;
 
-        // donutChart(data.asset, data.total_value);
+        donutChart(data.asset, data.total_value);
       })
       .catch((error) => {
         console.error(error);
