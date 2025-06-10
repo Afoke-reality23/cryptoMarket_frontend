@@ -4,8 +4,8 @@ const email = document.getElementById("email");
 const emailError = document.querySelector(".email-error");
 const urlParams = new URLSearchParams(window.location.search);
 const emailErrorMessage = urlParams.get("response");
-const ip = "http://127.0.0.1:1998";
-// const ip = "https://cryptomarket-server.onrender.com";
+// const ip = "http://127.0.0.1:1998";
+const ip = "https://cryptomarket-server.onrender.com";
 
 if (emailErrorMessage) {
   displayErrorMessage(emailErrorMessage);
