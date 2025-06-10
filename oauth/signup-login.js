@@ -7,8 +7,8 @@ const email = document.getElementById("email");
 const form = document.getElementById("form");
 email.value = clientEmail;
 email.innerText = clientEmail;
-// const ip = "http://127.0.0.1:1998";
-const ip = "https://cryptomarket-server.onrender.com";
+const ip = "http://127.0.0.1:1998";
+// const ip = "https://cryptomarket-server.onrender.com";
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   processAuthentication(email.value, password.value);
