@@ -70,8 +70,8 @@ const listAssetObj = {
   processing_speed: Number(transRate),
 };
 // console.log(sellAsset);
-const ip = "http://127.0.0.1:1998";
-// const ip = "https://cryptomarket-server.onrender.com";
+// const ip = "http://127.0.0.1:1998";[]
+const ip = "https://cryptomarket-server.onrender.com";
 function confirmTransaction() {
   fetch(`${ip}/sell`, {
     method: "POST",

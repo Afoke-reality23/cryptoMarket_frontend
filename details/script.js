@@ -68,7 +68,7 @@ function fetchAssetDetail(assetId) {
         console.log(data);
         // getCharts(data);
         populateDetailPage(data);
-        // fetchNews(data);
+        fetchNews(data);
       })
       .catch((error) => {
         console.error(error);
