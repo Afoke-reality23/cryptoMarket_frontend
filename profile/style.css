@@ -29,13 +29,14 @@ main {
 }
 .profile-notify {
   gap: 20px;
+  margin-top: -10px;
 }
-.profile-img,
-.notify {
+.profile-notify div {
   width: 30px;
-  border-radius: 50%;
-  height: 30px;
-  border: 1px solid red;
+  align-self: flex-start;
+}
+.profile-notify div img {
+  width: 100%;
 }
 .username {
   font-size: 24px;
@@ -55,6 +56,7 @@ main {
   font-size: 36px;
   font-family: Inter, sans-serif;
   font-weight: bold;
+  color: #ccc;
 }
 .nav-menu {
   display: flex;
@@ -74,7 +76,7 @@ main {
 .nav-menu a {
   text-decoration: none;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
   padding: 10px;
 }
@@ -99,22 +101,37 @@ main {
   /* background-color: #1e293b; */
   background-color: rgb(26 26 46);
   display: flex;
+  justify-content: space-between;
   color: #ccc;
-  padding: 15px 10px;
+  padding: 25px 10px;
   border-radius: 10px;
 }
-.tooltip-text {
-  display: none;
+.port-summary div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.port-summary span {
+  font-size: 30px;
 }
 .iav {
   font-size: 20px;
   font-weight: bolder;
 }
-.iav:hover ~ .tooltip-text {
-  display: block;
+.tooltip-text {
+  font-size: 14px;
+}
+.donut-containier {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+.apexcharts-legend.apx-legend-position-right {
+  position: absolute;
+  left: 200px !important;
 }
 #donutChart {
-  flex: 1 1 0;
+  width: 300px;
 }
 .apexcharts-legend.apx-legend-position-right * {
   color: #fff !important;
@@ -124,12 +141,6 @@ main {
   width: 60%;
   height: 100%;
   border: 2px solid green;
-}
-.total-value {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 5px 0;
 }
 .total-value p {
   display: flex;
@@ -167,6 +178,7 @@ main {
   max-height: 400px;
   overflow: hidden;
   margin: 20px 0;
+  font-size: 14px;
 }
 .activity-container {
   max-height: 300px;
@@ -174,6 +186,7 @@ main {
 .asset-allocation h3,
 .recent-activity h3 {
   color: #fff;
+  font-size: 14px;
 }
 .see-all {
   color: #fff;

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // clsBtn.addEventListener("click", () => (menu.style.display = "none"));
   const login = document.querySelector(".login");
   const logout = document.querySelector(".logout");
-  const profile = document.querySelector(".user-profile");
+  const portfolio = document.querySelector(".portfolio");
   const totalMarketCap = document.querySelector(".mkt-cap");
   const totalPercentChange = document.querySelector(".per-24h");
   const btcDominace = document.querySelector(".dominance");
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const proceedNegoBtn = document.getElementById("proceedNego");
   const chat = document.querySelector(".chat");
   const unreadedMessagesTotalNo = document.querySelector(".no-of-unread-txt");
-  console.log(unreadedMessagesTotalNo);
+  const trade = document.querySelector(".trade");
   // const ip = "http://127.0.0.1:1998";
   const ip = "https://cryptomarket-server.onrender.com";
 
@@ -53,16 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const status = await responses[0].json();
         if (status.isloggedIn === "loggedIn") {
-          profile.href = "profile/index.html";
+          portfolio.href = "profile/index.html";
           chat.href = "negotiations/index.html";
+          trade.href = "transaction/index.html";
           const mssgNo = await unreadMessage();
           if (Number(mssgNo) > 0) {
             const nam = "hello";
             unreadedMessagesTotalNo.textContent = mssgNo;
           }
         } else {
-          profile.href = "oauth/login/index.html";
+          portfolio.href = "oauth/login/index.html";
           chat.href = "oauth/login/index.html";
+          trade.href = "oauth/login/index.html";
         }
 
         const [assetsData, assetTotal] = [
