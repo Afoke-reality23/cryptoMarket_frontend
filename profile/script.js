@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const activityContainer = document.querySelector(".activity-container");
   const seeAllAsset = document.querySelector(".all-asset");
   const seeAllActivity = document.querySelector(".all-activity");
-  const sell = document.querySelector(".sell");
   const logOutBtn = document.getElementById("logout");
 
   logOutBtn.addEventListener("click", () => {
@@ -252,7 +251,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (value > 1e5) return (value / 1e5).toPrecision(3) + "K";
     if ((value = 1e4)) return value.toPrecision(1) + "K";
   }
-  sell.addEventListener("click", () => {
-    window.location = `../transaction/index.html`;
-  });
 });

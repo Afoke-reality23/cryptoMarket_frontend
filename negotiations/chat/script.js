@@ -55,9 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const ws = new WebSocket(
           `wss://cryptomarket-chat-server.onrender.com/chat?user_id=${userId}`
         );
-        // const ws = new WebSocket(
-        //   `wss://cryptomarket-chat-server.onrender.com/chat?user_id=${userId}`
-        // );
+        // const ws = new WebSocket(`ws://127.0.0.1:1991/chat?user_id=${userId}`);
         ws.onopen = () => console.log("connected");
         ws.onmessage = (e) => {
           console.log(e.data);

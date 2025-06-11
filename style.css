@@ -7,7 +7,7 @@ body {
   /* background-color: #0f172a; */
   background-color: rgb(10 14 26);
   color: #e0e0e0;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Inter", sans-serif;
   height: 100%;
 }
@@ -16,7 +16,7 @@ body {
   max-width: 1500px;
 }
 .logo {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
 }
 header img {
@@ -55,11 +55,20 @@ header {
   color: #94a3b8;
   padding: 25px;
 }
+.search-img {
+  display: inline-block;
+  max-width: 40px;
+  position: absolute;
+  top: 145px;
+  right: 30px;
+}
+.search-img img {
+  width: 100%;
+}
 
 .user-profile {
   height: 30px;
   width: 30px;
-  background-color: green;
   border-radius: 50%;
 }
 /* .nav-bar {
@@ -141,6 +150,7 @@ main nav {
   list-style-type: none;
   justify-content: space-around;
   margin-top: 15px;
+  font-size: 14px;
   /* background-color: rgb(26 26 46); */
 }
 main nav li a,
@@ -177,7 +187,7 @@ main > :first-child > :first-child {
 }
 .total-values div > :nth-child(2) {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 .total-values div > :nth-child(1) {
   font-weight: bold;
@@ -315,6 +325,9 @@ details {
   z-index: 9999;
   background-color: #030e20;
 }
+.float-footer img {
+  max-width: 30px;
+}
 .float-footer ul {
   display: flex;
   width: 100%;
@@ -322,7 +335,7 @@ details {
   list-style-type: none;
 }
 .float-footer ul li {
-  padding: 15px 10px;
+  padding: 10px;
 }
 .buy-nego {
   display: flex;
@@ -380,4 +393,11 @@ details {
   padding: 10px 15px;
   margin: 3px;
   font-size: 14px;
+}
+.no-of-unread-txt {
+  color: rgb(59 130 246);
+  display: block;
+  margin-top: -40px;
+  margin-left: 30px;
+  font-weight: bold;
 }

@@ -7,7 +7,7 @@ body {
   background-color: #0f172a;
   background-color: rgb(10 14 26);
   color: #e0e0e0;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Inter", sans-serif;
   /* height: 100%; */
   /* padding:  20px; */
@@ -32,6 +32,15 @@ body {
   padding: 10px;
   display: flex;
   justify-content: space-between;
+}
+.username {
+  font-size: 14px;
+}
+.menu {
+  height: 30px;
+}
+.menu img {
+  height: 100%;
 }
 .menu-tab {
   position: absolute;
@@ -109,13 +118,13 @@ body {
 }
 .reciever {
   align-self: flex-start;
-  background-color: #1e90ff;
+  background-color: #393d42;
   padding: 10px 15px;
   border-radius: 10px 10px 0px 10px;
   margin: 5px 0;
 }
 .letter-img {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   text-transform: capitalize;
   background-color: aquamarine;
