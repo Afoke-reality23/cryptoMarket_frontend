@@ -23,10 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const chat = document.querySelector(".chat");
   const unreadedMessagesTotalNo = document.querySelector(".no-of-unread-txt");
   const trade = document.querySelector(".trade");
+  const marktCapDiv = document.querySelector(".markt-cap-div");
+  const numbering = document.querySelector(".numbering");
+  const numberingMktCapCont = document.querySelector(".numbering-mkt-cap-cont");
+  const mainTableDiv = document.querySelector(".main-table-div");
   // const ip = "http://127.0.0.1:1998";
+  const market = document.querySelector(".mkt-main-con");
+  const mainAssetDiv = document.querySelector(".all-asset-div");
   const ip = "https://cryptomarket-server.onrender.com";
 
   fetchAssets();
+  marketListing();
   function fetchAssets() {
     const auth = fetch(`${ip}/oauth/status`, {
       credentials: "include",
@@ -53,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const status = await responses[0].json();
         if (status.isloggedIn === "loggedIn") {
-          portfolio.href = "profile/index.html";
+          portfolio.href = "portfolio/index.html";
           chat.href = "negotiations/index.html";
           trade.href = "transaction/index.html";
           const mssgNo = await unreadMessage();
@@ -93,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   marketList.forEach((marketListBtn) => {
     marketListBtn.addEventListener("click", () => {
-      marketListing();
+      // marketListing();
+      mainAssetDiv.classList.toggle("hide");
     });
   });
   async function unreadMessage() {
@@ -164,8 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (coin.symbol) {
           const row = document.createElement("tr");
           row.classList.add("row");
-          const id = document.createElement("td");
-          const marketCap = document.createElement("td");
+          const id = document.createElement("div");
           const iconSymbol = document.createElement("div");
           const icon = document.createElement("img");
           const symbolMarketCap = document.createElement("div");
@@ -173,39 +180,86 @@ document.addEventListener("DOMContentLoaded", () => {
           const marketCapNum = document.createElement("span");
           const price = document.createElement("td");
           const percentChange24h = document.createElement("td");
+          const percentChange7d = document.createElement("td");
+          const percentChange30d = document.createElement("td");
+          const volumeChange24h = document.createElement("td");
+          const volumeChange7d = document.createElement("td");
+          const volumeChange30d = document.createElement("td");
           id.textContent = incrementId++;
           id.dataset.assetSymbol = coin.asset_id;
+          row.dataset.assetSymbol = coin.asset_id;
           id.dataset.assetName = coin.asset_name;
           searchId.push(coin.asset_id);
           localStorage.setItem("searchId", searchId);
 
-          icon.src = coin.logo;
+          // icon.src = coin.logo;
           symbol.textContent = coin.symbol.toUpperCase();
           marketCapNum.textContent = roundMarketCap(coin.market_cap).trim();
+          percentChange24h.classList.add("percent-chng");
           percentChange24h.textContent =
             Number(coin.percent_change_24h.toFixed(3)) + "%".trim();
           if (coin.percent_change_24h < 0) {
-            percentChange24h.style.backgroundColor = "#ef4444";
+            percentChange24h.style.color = "#ef4444";
           } else {
             percentChange24h.textContent =
               "+" + Number(coin.percent_change_24h.toFixed(3)) + "%".trim();
-            percentChange24h.style.backgroundColor = "#10b981";
+            percentChange24h.style.color = "#10b981";
           }
           symbolMarketCap.textContent = coin.symbolMarketCap;
           price.textContent = Number(
             coin.asset_price.toPrecision(7)
           ).toLocaleString("en-US", { style: "currency", currency: "USD" });
+          if (coin.per7d < 0) {
+            percentChange7d.textContent = coin.per7d ? coin.per7d : 0;
+            percentChange7d.style.color = "#ef4444";
+          } else {
+            percentChange7d.textContent = coin.per7d ? coin.per7d : 0;
+            percentChange7d.style.color = "#10b981";
+          }
+          if (coin.per30d < 0) {
+            percentChange30d.textContent = coin.per30d ? coin.per30d : 0;
+            percentChange30d.style.color = "#ef4444";
+          } else {
+            percentChange30d.textContent = coin.per30d ? coin.per30d : 0;
+            percentChange30d.style.color = "#10b981";
+          }
+          if (coin.vol24h < 0) {
+            volumeChange24h.textContent = coin.vol24h ? coin.vol24h : 0;
+            volumeChange24h.style.color = "#ef4444";
+          } else {
+            volumeChange24h.textContent = coin.vol24h ? coin.vol24h : 0;
+            volumeChange24h.style.color = "#10b981";
+          }
+          if (coin.vol7d < 0) {
+            volumeChange7d.textContent = coin.vol7d ? coin.vol7d : 0;
+            volumeChange7d.style.color = "#ef4444";
+          } else {
+            volumeChange7d.textContent = coin.vol7d ? coin.vol7d : 0;
+            volumeChange7d.style.color = "#10b981";
+          }
+          if (coin.vol30d < 0) {
+            volumeChange30d.textContent = coin.vol30d ? coin.vol30d : 0;
+            volumeChange30d.style.color = "#ef4444";
+          } else {
+            volumeChange30d.textContent = coin.vol30d ? coin.vol30d : 0;
+            volumeChange30d.style.color = "#10b981";
+          }
+
           symbolMarketCap.appendChild(symbol);
           symbolMarketCap.classList.add("symbol-market-cap");
           symbolMarketCap.appendChild(marketCapNum);
           iconSymbol.appendChild(icon);
           iconSymbol.appendChild(symbolMarketCap);
           iconSymbol.classList.add("icon-symbol");
-          marketCap.appendChild(iconSymbol);
-          row.appendChild(id);
-          row.appendChild(marketCap);
+          numberingMktCapCont.appendChild(id);
+          numberingMktCapCont.appendChild(iconSymbol);
           row.appendChild(price);
           row.appendChild(percentChange24h);
+          row.appendChild(percentChange7d);
+          row.appendChild(percentChange30d);
+          row.appendChild(volumeChange24h);
+          row.appendChild(volumeChange7d);
+          row.appendChild(volumeChange30d);
           tableBody.appendChild(row);
           // return row;
         }
@@ -225,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function searchAssets(searchedAsset) {
-    console.log(searchedAsset);
     let pattern = new RegExp(searchedAsset, "i");
     let filteredAssets = new Array(
       ...new Set(
@@ -234,7 +287,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
       )
     );
-
     let url;
     if (filteredAssets && searchedAsset.length > 1) {
       url = `${ip}/search?searched_asset=${filteredAssets}`;
@@ -255,8 +307,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .then((data) => {
+        // let children = Array.from(numberingMktCapCont.children);
+        console.log(numberingMktCapCont.children.length);
+
         while (tableBody.firstChild) {
           tableBody.removeChild(tableBody.firstChild);
+        }
+        while (numberingMktCapCont.children.length > 2) {
+          let remove = numberingMktCapCont.lastElementChild;
+          numberingMktCapCont.removeChild(remove);
         }
         updateTable(data);
       })
@@ -276,62 +335,64 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new MutationObserver(() => {
     const rows = document.querySelectorAll(".tbody .row");
     rows.forEach((row) => {
-      const tds = row.querySelectorAll("td");
-      let symbol = tds[0].dataset.assetSymbol;
       row.setAttribute(
         "onclick",
-        `window.location='details/index.html?symbol=${symbol}'`
+        `window.location='details/index.html?symbol=${row.dataset.assetSymbol}'`
       );
     });
   });
   observer.observe(tableBody, { childList: true, subtree: true });
 
   function displayMarketTable(listed) {
-    tableContent.style.display = "none";
-    while (listAssetOverallInnerContainer.firstChild) {
-      listAssetOverallInnerContainer.removeChild(
-        listAssetOverallInnerContainer.firstChild
-      );
+    while (market.children > 4) {
+      market.removeChild(mainTableDiv.lastElementChild);
     }
     let no = 1;
     listed.map((list) => {
-      const listedAssetContainer = document.createElement("div");
-      const mainAssetContainer = document.createElement("div");
-      mainAssetContainer.classList.add("mini-con");
-      let num = document.createElement("div");
-      num.textContent = no++;
-      mainAssetContainer.appendChild(num);
-      const listedAssetNameData = document.createElement("div");
-      listedAssetNameData.textContent = list[1].toUpperCase();
-      listedAssetNameData.dataset.sellerId = list[6];
-      mainAssetContainer.appendChild(listedAssetNameData);
-      const listAssetQuantity = document.createElement("div");
-      listAssetQuantity.textContent = list[5];
-      mainAssetContainer.appendChild(listAssetQuantity);
-      const listedAssetPriceData = document.createElement("div");
-      listedAssetPriceData.textContent = list[4];
-      mainAssetContainer.appendChild(listedAssetPriceData);
-
-      const quickBuyNegotiate = document.createElement("div");
-      quickBuyNegotiate.classList.add("buy-nego", "hide");
+      const miniCon = document.createElement("div");
+      miniCon.classList.add("mini-con");
+      const numbering = document.createElement("div");
+      const assetDiv = document.createElement("div");
+      assetDiv.classList.add("mkt-asset-con");
+      const purchasing = document.createElement("div");
+      purchasing.classList.add("buy-nego", "hide");
       const quickBuy = document.createElement("div");
       quickBuy.classList.add("quick-buy");
-      quickBuy.textContent = "Quick buy";
-      quickBuyNegotiate.appendChild(quickBuy);
       const negotiate = document.createElement("div");
       negotiate.classList.add("nego");
-      negotiate.textContent = "Negotiate";
-      quickBuyNegotiate.appendChild(negotiate);
+      const seller = document.createElement("div");
+      const asset = document.createElement("div");
+      const img = document.createElement("img");
+      const assetSymbolDiv = document.createElement("div");
+      const quantity = document.createElement("div");
+      const price = document.createElement("div");
+      numbering.textContent = no++;
+      img.src = list[4];
+      assetSymbolDiv.appendChild(img);
+      assetSymbolDiv.appendChild(asset);
+      seller.textContent = list[0];
+      asset.textContent = list[2].toUpperCase();
+      quantity.textContent = list[6];
+      price.textContent = list[5];
+      quickBuy.textContent = "FAST BUY";
+      negotiate.textContent = "NEGOTIATE";
+      purchasing.appendChild(quickBuy);
+      purchasing.appendChild(negotiate);
+      assetDiv.appendChild(numbering);
+      assetDiv.appendChild(seller);
+      assetDiv.appendChild(asset);
+      assetDiv.appendChild(quantity);
+      assetDiv.appendChild(price);
+      miniCon.appendChild(assetDiv);
+      miniCon.appendChild(purchasing);
 
-      listedAssetContainer.appendChild(mainAssetContainer);
-      listedAssetContainer.appendChild(quickBuyNegotiate);
-      listAssetOverallInnerContainer.appendChild(listedAssetContainer);
-      mainAssetContainer.addEventListener("click", () => {
-        quickBuyNegotiate.classList.toggle("hide");
+      market.appendChild(miniCon);
+      miniCon.addEventListener("click", () => {
+        purchasing.classList.toggle("hide");
       });
       boughtAsset = {
-        asset_id: list[2],
-        sellerId: Number(list[6]),
+        asset_id: list[3],
+        sellerId: Number(list[7]),
       };
       quickBuy.addEventListener("click", () => {
         purchaseListedAsset(boughtAsset);
@@ -340,7 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
         warningCon.classList.toggle("hide");
         docBody.style.overflow = "hidden";
       });
-      proceedNegoBtn.addEventListener("click", async () => {
+      proceedNegoBtn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        console.log("click");
         boughtAsset.status = "Negotiating";
         let chatId = await markAssetToNegotiation(boughtAsset);
         console.log(chatId);

@@ -45,40 +45,51 @@ document.addEventListener("DOMContentLoaded", () => {
         populateChat(data.message, userId);
         let recieverId =
           userId === data.buyer_id ? data.seller_id : data.buyer_id;
-        complete.addEventListener("click", () => {
-          boughtAsset = {
-            chat_id: chatId,
-            sellerId: Number(recieverId),
-          };
-          purchaseListedAsset(boughtAsset);
-        });
+
         const ws = new WebSocket(
           `wss://cryptomarket-chat-server.onrender.com/chat?user_id=${userId}`
         );
         // const ws = new WebSocket(`ws://127.0.0.1:1991/chat?user_id=${userId}`);
         ws.onopen = () => console.log("connected");
         ws.onmessage = (e) => {
+          console.log("hi");
           console.log(e.data);
           let chat = JSON.parse(e.data);
-          const chatContainer = document.createElement("div");
-          const para = document.createElement("p");
-          chatContainer.classList.add(
-            `${chat.sender === userId ? "sender" : "reciever"}`
-          );
-          para.textContent = chat.msg;
-          chatContainer.appendChild(para);
-          mainContainer.appendChild(chatContainer);
+          console.log(chat);
+          if (chat.sender !== "system") {
+            console.log("true");
+            const chatContainer = document.createElement("div");
+            const para = document.createElement("p");
+            chatContainer.classList.add(
+              `${chat.sender === userId ? "sender" : "reciever"}`
+            );
+            para.textContent = chat.msg;
+            chatContainer.appendChild(para);
+            mainContainer.appendChild(chatContainer);
+          } else {
+            console.log("false");
+            const completeTPara = document.createElement("p");
+            completeTPara.textContent = chat.msg;
+            mainContainer.appendChild(completeTPara);
+          }
           let nearBottom = isNearBottom();
           if (nearBottom) {
             console.log("true");
             mainContainer.scrollTop = mainContainer.scrollHeight;
           }
         };
+        complete.addEventListener("click", () => {
+          boughtAsset = {
+            chat_id: chatId,
+            sellerId: Number(recieverId),
+          };
+          purchaseListedAsset(boughtAsset, chatId, ws, recieverId);
+        });
         sendBtn.addEventListener("click", () => {
           if (ws.readyState == WebSocket.OPEN) {
             let message = {
               recieverId: recieverId.toString(),
-              senderId: userId,
+              sender: userId,
               message: { chatId: chatId },
             };
             message.message.msg = textBox.value;
@@ -129,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
       offset
     );
   }
-  async function purchaseListedAsset(data) {
+  async function purchaseListedAsset(data, chatId, ws, recieverId) {
     try {
       const buy = await fetch(`${ip}/buy-listed`, {
         method: "POST",
@@ -144,6 +155,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (buyResult.status === "successfull") {
         console.log("inside already");
         const para = document.createElement("p");
+        message = {
+          msg: "transsction complete",
+          sender: "system",
+          chatId: chatId,
+          recieverId: recieverId,
+        };
+        ws.send(JSON.stringify(message));
         para.textContent = "transaction complete";
         para.classList.add("status");
         mainContainer.appendChild(para);
