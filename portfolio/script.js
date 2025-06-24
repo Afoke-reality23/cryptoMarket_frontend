@@ -8,23 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const activityContainer = document.querySelector(".activity-container");
   const seeAllAsset = document.querySelector(".all-asset");
   const seeAllActivity = document.querySelector(".all-activity");
-  const logOutBtn = document.getElementById("logout");
 
-  logOutBtn.addEventListener("click", () => {
-    fetch(`${ip}/logout`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => {
-      if (!response.ok) {
-        throw new Error(`logout Error:${response.statusText}`);
-      } else {
-        window.location = "../index.html";
-      }
-    });
-  });
+  // logOutBtn.addEventListener("click", () => {
+  //   fetch(`${ip}/logout`, {
+  //     method: "GET",
+  //     credentials: "include",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   }).then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error(`logout Error:${response.statusText}`);
+  //     } else {
+  //       window.location = "../index.html";
+  //     }
+  //   });
+  // });
   let toBeSoldAsset;
   updateSellingPage();
   function updateSellingPage() {
@@ -107,22 +106,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   fetchTransactionHistory();
   function displayAllHistory(histories) {
+    console.log(histories);
     if (histories.length > 0) {
       for (const history of histories) {
         // console.log(history);
         const activity = document.createElement("div");
         const logoAssetInfoDiv = document.createElement("div");
         const assetQuantity = document.createElement("p");
-        const logo = document.createElement("div");
         const img = document.createElement("img");
         const assetInfoDiv = document.createElement("div");
         const transactType = document.createElement("p");
         const date = document.createElement("p");
-        // img.src = history[5];
-        logo.appendChild(img);
-        logo.classList.add("logo");
+        img.src = history[5];
+        // logo.appendChild(img);
         transactType.textContent =
           history[4] === "buy" ? `Bought ${history[0]}` : `Sold ${history[0]}`;
+        transactType.appendChild(img);
         const dateObj = new Date(history[6].replace(" ", "T"));
         const options = {
           day: "2-digit",
@@ -137,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
         assetInfoDiv.appendChild(transactType);
         assetInfoDiv.appendChild(date);
         assetInfoDiv.classList.add("trans-type-date");
-        logoAssetInfoDiv.appendChild(logo);
         logoAssetInfoDiv.appendChild(assetInfoDiv);
         logoAssetInfoDiv.classList.add("log-trans-type");
         assetQuantity.textContent = history[2].toFixed(4) + history[1];

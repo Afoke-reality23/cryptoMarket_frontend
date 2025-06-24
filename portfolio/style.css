@@ -112,7 +112,8 @@ main {
   gap: 10px;
 }
 .port-summary span {
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: 500;
 }
 .iav {
   font-size: 20px;
@@ -225,6 +226,14 @@ main {
   margin: 5px 0;
   padding: 0;
 }
+.log-trans-type img {
+  max-width: 20px;
+}
+.trans-type-date p:nth-child(1) {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .show {
   display: block;
 }
@@ -239,6 +248,10 @@ main {
 }
 .name-symbol {
   flex-direction: column;
+}
+.name-symbol p:nth-child(2),
+.activity > p {
+  text-transform: uppercase;
 }
 .img-ast-name {
   display: flex;

@@ -90,7 +90,7 @@ function confirmTransaction() {
     })
     .then((data) => {
       console.log(data);
-      window.location = "../profile/index.html";
+      window.location = "../portfolio/index.html";
     })
     .catch((error) => {
       console.error(error);
@@ -115,7 +115,7 @@ function listAsset() {
     })
     .then((data) => {
       if (data.status === "success") {
-        window.location = `../profile/index.html`;
+        window.location = `../portfolio/index.html`;
       } else {
         console.log("sorry something went wrong !!!!");
       }

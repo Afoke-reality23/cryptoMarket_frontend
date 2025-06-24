@@ -420,6 +420,6 @@ function roundMarketCap(value) {
   if (value > 1e9) return (value / 1e9).toPrecision(3) + "B";
   if (value > 1e6) return (value / 1e6).toPrecision(3) + "M";
   if (value > 1e5) return (value / 1e5).toPrecision(3) + "K";
-  if ((value = 1e4)) return value.toPrecision(1) + "K";
+  if ((value = 1e4)) return (value / 1e4).toPrecision(1) + "K";
 }
 fetchAssetDetail(asset_id);
